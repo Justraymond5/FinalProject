@@ -11,7 +11,8 @@ class Program
         Console.WriteLine("2. Add a Movie");
         Console.WriteLine("3. Display All Items");
         Console.WriteLine("4. Edit an Item");
-        Console.WriteLine("5. Exit");
+        Console.WriteLine("5. Remove an Item");
+        Console.WriteLine("6. Exit");
         Console.Write("\nYour choice: ");
         
     }
@@ -104,15 +105,33 @@ class Program
                     Console.WriteLine("Could not find your item, try again");
                 }
             }
-            //Ends while loop and program
+            //Removes items from list
             else if (choice == 5)
+            {
+                Console.Write("Enter title of the book or movie you want to delete: ");
+                string title = Console.ReadLine();
+                
+                var itemToDelete = libraryItems.FirstOrDefault(i => i.Matches(title));
+
+                if (itemToDelete != null)
+                {
+                    libraryItems.Remove(itemToDelete);
+                    Console.WriteLine("Item deleted successfully.");
+                }
+                else
+                {
+                    Console.WriteLine("Could not find the item to delete.");
+                }
+            }
+            //Ends while loop and program
+            else if (choice == 6)
             {
                 Console.WriteLine("\nGoodbye!");
                 break;
             }
             else
             {
-                Console.WriteLine("Enter a number between 1 and 5.");
+                Console.WriteLine("Enter a number between 1 and 6.");
             }
         }
     }
