@@ -1,5 +1,5 @@
 ﻿namespace Final_Project___Library_System;
-// Author: Raymond Gonzalez
+// Author: Raymond Gonzalez Ramirez
 // Course: COMP-003A
 // Faculty: Jonathan Cruz
 // Purpose: Final project: Library Management System to demonstrating inheritance, abstraction, polymorphism, and method overloading in C#
