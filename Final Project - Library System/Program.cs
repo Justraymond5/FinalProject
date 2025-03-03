@@ -45,6 +45,28 @@ class Program
                 libraryItems.Add(new Book(title, time, year, author));
                 Console.WriteLine("Book added successfully!");
             }
+            else if (choice == 2)
+            {
+                Console.Write("Enter movie title: ");
+                string title = Console.ReadLine();
+                Console.Write("Enter check-out time (in weeks): ");
+                if (!int.TryParse(Console.ReadLine(), out int time)) { Console.WriteLine("Invalid check-out time."); continue; }
+                Console.Write("Enter year released: ");
+                if (!int.TryParse(Console.ReadLine(), out int year)) { Console.WriteLine("Invalid year."); continue; }
+                Console.Write("Enter director: ");
+                string director = Console.ReadLine();
+                
+                libraryItems.Add(new Movie(title, time, year, director));
+                Console.WriteLine("Movie added successfully!");
+            }
+            else if (choice == 3)
+            {
+                Console.WriteLine("\nItems in the library:");
+                foreach (var item in libraryItems)
+                {
+                    item.DisplayInfo();
+                }
+            }
             
         }
     }
