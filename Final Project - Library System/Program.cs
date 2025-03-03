@@ -132,6 +132,7 @@ class Program
                             }
                             else
                             {
+                                
                                 Console.WriteLine("Invalid input.");
                                 continue;
                             }
