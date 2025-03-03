@@ -31,6 +31,20 @@ class Program
                 continue;
             }
 
+            if (choice == 1)
+            {
+                Console.Write("Enter book title: ");
+                string title = Console.ReadLine();
+                Console.Write("Enter check-out time (in weeks): ");
+                if (!int.TryParse(Console.ReadLine(), out int time)) { Console.WriteLine("Invalid check-out time."); continue; }
+                Console.Write("Enter year published: ");
+                if (!int.TryParse(Console.ReadLine(), out int year)) { Console.WriteLine("Invalid year."); continue; }
+                Console.Write("Enter author: ");
+                string author = Console.ReadLine();
+                
+                libraryItems.Add(new Book(title, time, year, author));
+                Console.WriteLine("Book added successfully!");
+            }
             
         }
     }
