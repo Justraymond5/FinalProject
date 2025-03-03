@@ -20,7 +20,7 @@ class Program
         //Ensure that I can add 50+ items
         List<CheckOut> libraryItems = new();
         Console.WriteLine("Welcome to the Library Management System!");
-        
+        // Loop of the main entry point to run the if statements
         while (true)
         {
             MainMenu();
@@ -30,7 +30,7 @@ class Program
                 Console.WriteLine("Invalid input. Please enter a number between 1 and 5.");
                 continue;
             }
-
+            //Added the book item
             if (choice == 1)
             {
                 Console.Write("Enter book title: ");
@@ -45,6 +45,7 @@ class Program
                 libraryItems.Add(new Book(title, time, year, author));
                 Console.WriteLine("Book added successfully!");
             }
+            //Added the movie item
             else if (choice == 2)
             {
                 Console.Write("Enter movie title: ");
@@ -59,6 +60,7 @@ class Program
                 libraryItems.Add(new Movie(title, time, year, director));
                 Console.WriteLine("Movie added successfully!");
             }
+            //Displays the books and movies items
             else if (choice == 3)
             {
                 Console.WriteLine("\nItems Checked Out:");
@@ -67,10 +69,12 @@ class Program
                     item.DisplayInfo();
                 }
             }
+            //Searches to edit
             else if (choice == 4)
             {
-                Console.Write("Enter title of book or movie to search: ");
+                Console.Write("Enter title of book or movie you want to edit: ");
                 string title = Console.ReadLine();
+                //Uses list to find item
                 var foundItems = libraryItems.FindAll(i => i.Matches(title));
                 
                 if (foundItems.Count > 0)
@@ -100,6 +104,7 @@ class Program
                     Console.WriteLine("Could not find your item, try again");
                 }
             }
+            //Ends while loop and program
             else if (choice == 5)
             {
                 Console.WriteLine("\nGoodbye!");
