@@ -16,9 +16,30 @@ class Program
         Console.Write("\nYour choice: ");
         
     }
+
+    static void AddBook(List<CheckOut> libraryItems)
+    {
+        
+    }
+
+    static void AddMovie(List<CheckOut> libraryItems)
+    {
+        Console.Write("Enter movie title: ");
+        string title = Console.ReadLine();
+        Console.Write("Enter check-out time (in weeks): ");
+        if (!int.TryParse(Console.ReadLine(), out int time)) { Console.WriteLine("Invalid check-out time."); continue; }
+        Console.Write("Enter year released: ");
+        if (!int.TryParse(Console.ReadLine(), out int year)) { Console.WriteLine("Invalid year."); continue; }
+        Console.Write("Enter director: ");
+        string director = Console.ReadLine();
+                
+        libraryItems.Add(new Movie(title, time, year, director));
+        Console.WriteLine("Movie added successfully!");
+    }
     static void Main()
     {
         //Ensure that I can add 50+ items
+        // LibaryItems contains both books and Movies
         List<CheckOut> libraryItems = new();
         Console.WriteLine("Welcome to the Library Management System!");
         // Loop of the main entry point to run the if statements
@@ -34,32 +55,14 @@ class Program
             //Added the book item
             if (choice == 1)
             {
-                Console.Write("Enter book title: ");
-                string title = Console.ReadLine();
-                Console.Write("Enter check-out time (in weeks): ");
-                if (!int.TryParse(Console.ReadLine(), out int time)) { Console.WriteLine("Invalid check-out time."); continue; }
-                Console.Write("Enter year published: ");
-                if (!int.TryParse(Console.ReadLine(), out int year)) { Console.WriteLine("Invalid year."); continue; }
-                Console.Write("Enter author: ");
-                string author = Console.ReadLine();
+                AddBook();
                 
-                libraryItems.Add(new Book(title, time, year, author));
-                Console.WriteLine("Book added successfully!");
             }
             //Added the movie item
             else if (choice == 2)
             {
-                Console.Write("Enter movie title: ");
-                string title = Console.ReadLine();
-                Console.Write("Enter check-out time (in weeks): ");
-                if (!int.TryParse(Console.ReadLine(), out int time)) { Console.WriteLine("Invalid check-out time."); continue; }
-                Console.Write("Enter year released: ");
-                if (!int.TryParse(Console.ReadLine(), out int year)) { Console.WriteLine("Invalid year."); continue; }
-                Console.Write("Enter director: ");
-                string director = Console.ReadLine();
+                AddMovie(libraryItems);
                 
-                libraryItems.Add(new Movie(title, time, year, director));
-                Console.WriteLine("Movie added successfully!");
             }
             //Displays the books and movies items
             else if (choice == 3)
