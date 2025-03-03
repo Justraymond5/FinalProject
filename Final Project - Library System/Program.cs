@@ -19,7 +19,17 @@ class Program
 
     static void AddBook(List<CheckOut> libraryItems)
     {
-        
+        Console.Write("Enter book title: ");
+        string title = Console.ReadLine();
+        Console.Write("Enter check-out time (in weeks): ");
+        if (!int.TryParse(Console.ReadLine(), out int time)) { Console.WriteLine("Invalid check-out time."); return; }
+        Console.Write("Enter year published: ");
+        if (!int.TryParse(Console.ReadLine(), out int year)) { Console.WriteLine("Invalid year."); return; }
+        Console.Write("Enter author: ");
+        string author = Console.ReadLine();
+
+        libraryItems.Add(new Book(title, time, year, author));
+        Console.WriteLine("Book added successfully!");
     }
 
     static void AddMovie(List<CheckOut> libraryItems)
@@ -27,9 +37,9 @@ class Program
         Console.Write("Enter movie title: ");
         string title = Console.ReadLine();
         Console.Write("Enter check-out time (in weeks): ");
-        if (!int.TryParse(Console.ReadLine(), out int time)) { Console.WriteLine("Invalid check-out time."); continue; }
+        if (!int.TryParse(Console.ReadLine(), out int time)) { Console.WriteLine("Invalid check-out time."); return; }
         Console.Write("Enter year released: ");
-        if (!int.TryParse(Console.ReadLine(), out int year)) { Console.WriteLine("Invalid year."); continue; }
+        if (!int.TryParse(Console.ReadLine(), out int year)) { Console.WriteLine("Invalid year."); return; }
         Console.Write("Enter director: ");
         string director = Console.ReadLine();
                 
@@ -55,7 +65,7 @@ class Program
             //Added the book item
             if (choice == 1)
             {
-                AddBook();
+                AddBook(libraryItems);
                 
             }
             //Added the movie item
