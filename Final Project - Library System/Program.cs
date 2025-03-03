@@ -61,13 +61,54 @@ class Program
             }
             else if (choice == 3)
             {
-                Console.WriteLine("\nItems in the library:");
+                Console.WriteLine("\nItems Checked Out:");
                 foreach (var item in libraryItems)
                 {
                     item.DisplayInfo();
                 }
             }
-            
+            else if (choice == 4)
+            {
+                Console.Write("Enter title of book or movie to search: ");
+                string title = Console.ReadLine();
+                var foundItems = libraryItems.FindAll(i => i.Matches(title));
+                
+                if (foundItems.Count > 0)
+                {
+                    foreach (var item in foundItems)
+                    {
+                        item.DisplayInfo();
+                        Console.Write("Would you like to update the check out time? (yes/no): ");
+                        string response = Console.ReadLine().ToLower();
+                        if (response == "yes")
+                        {
+                            Console.Write("Enter new check-out time (in weeks): ");
+                            if (int.TryParse(Console.ReadLine(), out int newTime) && newTime > 0)
+                            {
+                                item.Time = newTime;
+                                Console.WriteLine("Check-out time updated successfully!");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Invalid input.");
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Could not find your item, try again");
+                }
+            }
+            else if (choice == 5)
+            {
+                Console.WriteLine("\nGoodbye!");
+                break;
+            }
+            else
+            {
+                Console.WriteLine("Enter a number between 1 and 5.");
+            }
         }
     }
 }
