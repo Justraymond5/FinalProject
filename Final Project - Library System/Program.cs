@@ -18,7 +18,7 @@ class Program
         Console.Write("\nYour choice: ");
         
     }
-
+//method for book promt
     static void AddBook(List<CheckOut> libraryItems)
     {
         Console.Write("Enter book title: ");
@@ -36,7 +36,7 @@ class Program
         libraryItems.Add(new Book(title, time, year, author));
         Console.WriteLine("Book added successfully!");
     }
-
+    //method for Movie promt
     static void AddMovie(List<CheckOut> libraryItems)
     {
         Console.Write("Enter movie title: ");
@@ -99,6 +99,7 @@ class Program
                 else
                     {
                         Console.WriteLine("There is nothing that has been checked out");
+                        continue;
                     }
                 
 
@@ -132,6 +133,7 @@ class Program
                             else
                             {
                                 Console.WriteLine("Invalid input.");
+                                continue;
                             }
                         }
                     }
@@ -158,6 +160,7 @@ class Program
                 else
                 {
                     Console.WriteLine("Could not find the item to delete.");
+                    continue;
                 }
             }
             //Ends while loop and program
@@ -169,6 +172,7 @@ class Program
             else
             {
                 Console.WriteLine("Enter a number between 1 and 6.");
+                continue;
             }
         }
     }
