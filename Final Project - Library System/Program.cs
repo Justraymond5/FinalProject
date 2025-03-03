@@ -4,6 +4,8 @@ class Program
     /// <summary>
     /// Method for holding the prompt
     /// </summary>
+    
+    //<Method storing> 
     static void MainMenu()
     {
         Console.WriteLine("\nPlease choose an option:");
@@ -21,10 +23,13 @@ class Program
     {
         Console.Write("Enter book title: ");
         string title = Console.ReadLine();
+        
         Console.Write("Enter check-out time (in weeks): ");
         if (!int.TryParse(Console.ReadLine(), out int time)) { Console.WriteLine("Invalid check-out time."); return; }
+        
         Console.Write("Enter year published: ");
         if (!int.TryParse(Console.ReadLine(), out int year)) { Console.WriteLine("Invalid year."); return; }
+        
         Console.Write("Enter author: ");
         string author = Console.ReadLine();
 
@@ -36,16 +41,20 @@ class Program
     {
         Console.Write("Enter movie title: ");
         string title = Console.ReadLine();
+        
         Console.Write("Enter check-out time (in weeks): ");
         if (!int.TryParse(Console.ReadLine(), out int time)) { Console.WriteLine("Invalid check-out time."); return; }
+        
         Console.Write("Enter year released: ");
         if (!int.TryParse(Console.ReadLine(), out int year)) { Console.WriteLine("Invalid year."); return; }
+        
         Console.Write("Enter director: ");
         string director = Console.ReadLine();
                 
         libraryItems.Add(new Movie(title, time, year, director));
         Console.WriteLine("Movie added successfully!");
     }
+    // </Method storing> 
     static void Main()
     {
         //Ensure that I can add 50+ items
@@ -57,6 +66,7 @@ class Program
         {
             MainMenu();
             int choice;
+            
             if (!int.TryParse(Console.ReadLine(), out choice))
             {
                 Console.WriteLine("Invalid input. Please enter a number between 1 and 5.");
@@ -71,6 +81,7 @@ class Program
             //Added the movie item
             else if (choice == 2)
             {
+                
                 AddMovie(libraryItems);
                 
             }
@@ -78,15 +89,25 @@ class Program
             else if (choice == 3)
             {
                 Console.WriteLine("\nItems Checked Out:");
-                foreach (var item in libraryItems)
+                if (libraryItems.Any())
                 {
-                    item.DisplayInfo();
+                    foreach (var item in libraryItems)
+                    {
+                        item.DisplayInfo();
+                    }
                 }
+                else
+                    {
+                        Console.WriteLine("There is nothing that has been checked out");
+                    }
+                
+
             }
             //Searches to edit
             else if (choice == 4)
             {
                 Console.Write("Enter title of book or movie you want to edit: ");
+                
                 string title = Console.ReadLine();
                 //Uses list to find item
                 var foundItems = libraryItems.FindAll(i => i.Matches(title));
@@ -98,11 +119,13 @@ class Program
                         item.DisplayInfo();
                         Console.Write("Would you like to update the check out time? (yes/no): ");
                         string response = Console.ReadLine().ToLower();
+                        
                         if (response == "yes")
                         {
                             Console.Write("Enter new check-out time (in weeks): ");
                             if (int.TryParse(Console.ReadLine(), out int newTime) && newTime > 0)
                             {
+                                
                                 item.Time = newTime;
                                 Console.WriteLine("Check-out time updated successfully!");
                             }
@@ -123,6 +146,7 @@ class Program
             {
                 Console.Write("Enter title of the book or movie you want to delete: ");
                 string title = Console.ReadLine();
+                
                 
                 var itemToDelete = libraryItems.FirstOrDefault(i => i.Matches(title));
 

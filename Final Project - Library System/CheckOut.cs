@@ -1,6 +1,6 @@
 namespace Final_Project___Library_System;
 /// <summary>
-/// The base class/ abstract that will be used to make children classes
+/// The base class for boos and movies, holding their shared properties
 /// </summary>
 public abstract class CheckOut
 {
