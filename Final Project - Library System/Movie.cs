@@ -15,6 +15,6 @@ public class Movie : CheckOut
     /// </summary>
     public override void DisplayInfo()
     {
-        Console.WriteLine($"Movie: {Title}, Director: {Director}, Check Out Time (in weeks): {Time} weeks, Year: {Year}");
+        Console.WriteLine($"Movie: {Title}, Director: {Director}, Check Out Time: {Time} weeks, Year: {Year}");
     }
 }
