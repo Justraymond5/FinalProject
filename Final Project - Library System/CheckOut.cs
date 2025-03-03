@@ -8,6 +8,10 @@ public abstract class CheckOut
     private int _year;
     private int _time;
     
+    /// <summary>
+    /// Will get the information "Title" and set that value to "_title"
+    /// </summary>
+    /// <exception cref="ArgumentException">This just ensures that the title is not blank</exception>
     public string Title 
     {
         get { return _title; }
@@ -21,7 +25,10 @@ public abstract class CheckOut
         }
     }
     
-    
+    /// <summary>
+    /// Will get the information "Year" and set that value to "_year"
+    /// </summary>
+    /// <exception cref="ArgumentException">This just ensures that the year is not negative</exception>
     public int Year
     {
         get { return _year; }
@@ -34,6 +41,10 @@ public abstract class CheckOut
             _year = value;
         }
     }
+    /// <summary>
+    /// Will get the information "Time" and set that value to "_time"
+    /// </summary>
+    /// <exception cref="ArgumentException">This just ensures that the time is positive</exception>
     public int Time
     {
         get { return _time; }
@@ -46,6 +57,13 @@ public abstract class CheckOut
             _time = value;
         }
     }
+    // The construtor
+    /// <summary>
+    /// Initalizes three properites
+    /// </summary>
+    /// <param name="title">Name of the item being checked out; Cant be empty</param>
+    /// <param name="time">How long are they going to cheak them out; Not negative</param>
+    /// <param name="year">The year the item came out; Not negative</param>
     public CheckOut(string title, int time, int year)
     {
         Title = title;
